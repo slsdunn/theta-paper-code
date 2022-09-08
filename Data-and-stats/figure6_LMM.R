@@ -2,6 +2,7 @@ setwd('R')
 
 library(lme4)
 library(stargazer)
+library(emmeans)
 
 p= "figure6data.csv"
 mydata = read.csv(p)
@@ -19,6 +20,11 @@ rat_rad <- subset(rat, Chan=="rad")
 mdlR <- lmer(Peakrangenorm ~ Epoch*Chan + (1|ID/Session),rat)
 mdlRori <- lmer(Peakrangenorm ~ Epoch + (1|ID/Session),rat_ori)
 mdlRrad <- lmer(Peakrangenorm ~ Epoch + (1|ID/Session),rat_rad)
+
+# post-hoc comparison
+emmeans(mdlRori, list(pairwise ~ Epoch), adjust = "tukey")
+emmeans(mdlRrad, list(pairwise ~ Epoch), adjust = "tukey")
+
 
 # save in text file
 sink("fig6_rat_trials_lmer.txt")
@@ -39,6 +45,11 @@ ferret_rad <- subset(ferret, Chan=="rad")
 mdlF <- lmer(Peakrangenorm ~ Epoch*Chan + (1|ID/Session),ferret)
 mdlFori <- lmer(Peakrangenorm ~ Epoch + (1|ID/Session),ferret_ori)
 mdlFrad <- lmer(Peakrangenorm ~ Epoch + (1|ID/Session),ferret_rad)
+
+# post-hoc comparison
+emmeans(mdlFori, list(pairwise ~ Epoch), adjust = "tukey")
+emmeans(mdlFrad, list(pairwise ~ Epoch), adjust = "tukey")
+
 
 # save in text file
 sink("fig6_ferret_trials_lmer.txt")
