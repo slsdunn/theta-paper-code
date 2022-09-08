@@ -7,23 +7,31 @@ rootdrive = ''; % insert location of data
 
 %% paths/reference tables
 params.figDataPath         = fullfile(rootdrive,'FigureData');
-params.F.preprocessingPath = fullfile(rootdrive,'Ferret','Extracted2','Preprocessing');
-params.F.extDataPath       = fullfile(rootdrive,'Ferret','Extracted2');
-params.F.processedDataPath = fullfile(rootdrive,'Ferret','Extracted2','ProcessedData');
-params.F.refPath           = fullfile(rootdrive,'Ferret','Extracted2','reference');
+params.F.preprocessingPath = fullfile(rootdrive,'Ferret data','Preprocessing');
+params.F.extDataPath       = fullfile(rootdrive,'Ferret data');
+params.F.processedDataPath = fullfile(rootdrive,'Ferret data','ProcessedData');
+params.F.refPath           = fullfile(rootdrive,'metadata');
 params.F.refFn             = 'ferretReference.mat';
-params.F.trialsFn          = 'ferretTrials.mat';
 params.F.IDs               = {'KIW','EMU','BEA','ANI'};
 params.F.IDsides           = {'KIWL','KIWR','EMUL','BEAL','BEAR','ANIL','ANIR'};
 
-params.R.preprocessingPath = fullfile(rootdrive,'Rat','Extracted2','Preprocessing');
-params.R.extDataPath       = fullfile(rootdrive,'Rat','Extracted2');
-params.R.processedDataPath = fullfile(rootdrive,'Rat','Extracted2','ProcessedData');
-params.R.refPath           = fullfile(rootdrive,'Rat','Extracted2','reference');
+% KIW = F1
+% EMU = F2
+% BEA = F3
+% ANI = F4
+
+params.R.preprocessingPath = fullfile(rootdrive,'Rat data','Preprocessing');
+params.R.extDataPath       = fullfile(rootdrive,'Rat data');
+params.R.processedDataPath = fullfile(rootdrive,'Rat data','ProcessedData');
+params.R.refPath           = fullfile(rootdrive,'Rat data','reference');
 params.R.refFn             = 'ratReference.mat';
-params.R.trialsFn          = 'ratTrials.mat';
-params.R.IDs               = {'DBLU','ERED','DRED'};
+params.R.ID                = {'DBLU','ERED','DRED'};
 params.R.IDsides           = {'DBLUR','EREDR','DREDR'};
+
+% DBLU = R1
+% ERED = R2
+% DRED = R3
+
 
 %% data extraction and cleaning
 % ferret
@@ -112,7 +120,7 @@ params.oCL.DBLUR = 15;
 params.oCL.EREDR = 14;  
 params.oCL.DREDR = 20;
 
-% stratum radiatum
+% stratum radiatum/lacunosum moleculare
 params.rCL.KIWL  = 10;
 params.rCL.KIWR  = []; 
 params.rCL.EMUL  = [];
